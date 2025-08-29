@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+@import './variables.css';
+/* =================================================================
+   THEME CONFIGURATION - Design Tokens
+   ================================================================= */
+
+@theme inline {
+  /* Brand Colors */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-territory: var(--territory);
+  --color-forth: var(--forth);
+  --color-fifth: var(--fifth);
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Typography */
+  --font-display: var(--font-display), 'Nanum Pen Script', 'cursive';
+  --font-family-body: 'Inter', 'system-ui', 'sans-serif';
+  --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'monospace';
+}
+
+/* =================================================================
+   DARK THEME VARIABLES
+   ================================================================= */
+
+[data-theme='dark'] {
+  --card-background: var(--color-neutral-900);
+  --card-border: var(--color-neutral-700);
+  --text-primary: var(--color-neutral-50);
+  --text-secondary: var(--color-neutral-300);
+  --text-muted: var(--color-neutral-400);
+}
+
+/* =================================================================
+   BASE STYLES
+   ================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+  font-family: var(--font-family-body);
+  color: var(--text-primary);
+  background-color: var(--color-neutral-50);
+  line-height: 1.6;
+  transition: var(--theme-transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] body {
+  background-color: var(--color-neutral-950);
+}
+
+/* =================================================================
+   RESPONSIVE DESIGN
+   ================================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding-y: 3rem;
+    --section-padding-x: 1rem;
+  }
+}
+
+/* =================================================================
+   ACCESSIBILITY
+   ================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
