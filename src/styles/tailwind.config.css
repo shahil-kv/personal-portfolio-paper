@@ -22,6 +22,7 @@
   --font-display: var(--font-display), 'Nanum Pen Script', 'cursive';
   --font-family-body: 'Inter', 'system-ui', 'sans-serif';
   --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'monospace';
+  --font-family-dm-sans: 'DM Sans', 'DM Sans Placeholder', sans-serif;
 }
 
 /* =================================================================
