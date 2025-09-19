@@ -4,7 +4,7 @@ export default function RocketIcon() {
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 90 89' // <-- adjust to your SVG's original viewBox
       fill='none'
-      className='w-20 h-16 top-[-120] right-1 relative left-[250px]' // tailwind size
+      className='w-16 h-16 top-[-70] right-1 relative left-[250px]' // tailwind size
     >
       <path d='M6.63 ... Z' fill='#717171' />
       <path d='M35.8 ... Z' fill='#717171' />
