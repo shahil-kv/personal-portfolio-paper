@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../layout/Header';
 import Image from 'next/image';
 import RocketIcon from '../common/rocket';
+import Work from './Work';
+import Footer from './Footer';
 
 const Hero = () => {
   return (
@@ -119,76 +121,7 @@ const Hero = () => {
         </div>
       </div>
       <div className='w-full h-[2px] bg-[#cccccc8b]  flex justify-center  mt-28 lg:mt-16'></div>
-
-      {/*  work section starts  */}
-      <div className='flex flex-col  justify-center items-center px-4   py-24  w-full '>
-        <p className='font-display lg:mt-44 relative text-6xl lg:text-8xl w-[300px]   my-2 mt-10 text-left inline-block lg:w-full  lg:max-w-[63rem]'>
-          Work{' '}
-          <svg
-            viewBox='0 0 166.632 21.953'
-            overflow='visible'
-            id='svg-1498675386_614'
-            className='hidden  lg:absolute inset-0 lg:block max-w-[170px] top-[45px]
-  left-[191px]'
-          >
-            <path
-              d='M 11.463 20.511 C -20.412 16.704 22.566 -11.331 39.132 5.143 C 55.698 21.618 43.132 12.872 43.132 12.872 L 57.781 7.513 C 61.058 6.314 64.698 7.897 66.055 11.112 L 69.081 18.28 C 69.969 20.384 72.276 21.507 74.48 20.91 L 92.457 16.037 C 100.074 13.972 108.129 14.175 115.632 16.622 L 115.632 16.622 C 123.251 19.107 131.214 20.372 139.228 20.372 L 166.632 20.372'
-              fill='transparent'
-              strokeWidth='7'
-              stroke='#AAA'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            ></path>
-          </svg>
-        </p>
-
-        <div className='flex flex-col  justify-center  gap-14  w-full'>
-          <div className='flex flex-col lg:flex-row lg:gap-16 justify-center items-center w-full'>
-            <div className='flex flex-col   items-center justify-center max-w-[300px] lg:max-w-[650px] w-full  mt-10'>
-              <Image
-                className='  h-auto object-fill  bg-cover bg-no-repeat'
-                alt='work_images_temp'
-                src={'/dummyImage.png'}
-                width={2520}
-                height={1540}
-              />
-            </div>
-            <div className='w-full flex flex-col sm:px-6 lg:px-0  max-w-[350px]'>
-              <p className='font-family-dm-sans text-left text-[13px] mt-10 w-[330px] text-text font-medium'>
-                voyagemath
-              </p>
-              <p className='font-family-dm-sans text-left text-[18px] w-[330px] text-primary font-medium'>
-                boosting user activation
-              </p>
-              <p className='font-family-dm-sans lg:text-[16px] text-[14px] mt-2 mb-4 text-text font-medium w-[300px]'>
-                making an onboarding journey to improve user activation for a
-                math practice tool
-              </p>
-              <button className='text-left relative font-display w-[330px]'>
-                <Image
-                  className='w-40 h-10 opacity-70 '
-                  src={'/button.png'}
-                  alt='button'
-                  width={1220}
-                  height={392}
-                />
-                <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
-                  View Project
-                </p>
-                <Image
-                  className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
-                  src={'/lamb.png'}
-                  alt='lamb'
-                  width={70}
-                  height={55}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/*  work section ends  */}
-
+      <Work />
       <div className=' h-[2px] w-full bg-[#cccccc8b]  '></div>
 
       <Image
@@ -207,39 +140,10 @@ const Hero = () => {
         height={1200}
       />
 
-      <p className='text-center text-primary mt-5 font-family-dm-sans mb-14'>
+      <p className='text-center lg:text-xl text-primary mt-5 font-family-dm-sans mb-14'>
         a bucket full of ideas waiting to spill
       </p>
-      {/* footer  starts*/}
-      <div className='flex flex-row w-full border-t border-t-black/10 justify-between items-center px-6 py-6'>
-        <p className='font-display text-[20px] text-primary'>
-          Made with love :)
-        </p>
-        <div className='flex gap-2 items-centers'>
-          <a href=''>
-            <Image
-              src={'/instagram.png'}
-              alt='instagram'
-              width={25}
-              height={25}
-            />
-          </a>
-          <a href=''>
-            {' '}
-            <Image src={'/twitter.png'} alt='twitter' width={25} height={25} />
-          </a>
-          <a href=''>
-            {' '}
-            <Image
-              src={'/linkedin.png'}
-              alt='linkedin'
-              width={25}
-              height={25}
-            />
-          </a>
-        </div>
-      </div>
-      {/*  footer section ends  */}
+      <Footer />
     </div>
   );
 };
