@@ -14,7 +14,7 @@ const Footer = () => {
             alt='instagram'
             width={25}
             height={25}
-            className=' lg:w-12 h-12 text-black'
+            className=' lg:w-12 lg:h-12 text-black'
           />
         </a>
         <a href=''>
@@ -22,7 +22,7 @@ const Footer = () => {
           <Image
             src={'/twitter.png'}
             alt='twitter'
-            className='  lg:w-12 h-12 text-black'
+            className='  lg:w-12 lg:h-12 text-black'
             width={25}
             height={25}
           />
@@ -34,7 +34,7 @@ const Footer = () => {
             alt='linkedin'
             width={25}
             height={25}
-            className='  lg:w-12 h-12 text-black'
+            className='  lg:w-12 lg:h-12 text-black'
           />
         </a>
       </div>

@@ -132,15 +132,17 @@ const Hero = () => {
         height={600}
       />
 
-      <Image
-        className='max-w-[200px]'
-        src={'/footerbucket.png'}
-        alt='footerbucket'
-        width={860}
-        height={1200}
-      />
+      <div className='relative'>
+        <Image
+          className='max-w-[200px] -left-25 absolute'
+          src={'/footerbucket.png'}
+          alt='footerbucket'
+          width={860}
+          height={1200}
+        />
+      </div>
 
-      <p className='text-center lg:text-xl text-primary mt-5 font-family-dm-sans mb-14'>
+      <p className='text-center  lg:text-xl text-primary mt-80  font-family-dm-sans mb-14'>
         a bucket full of ideas waiting to spill
       </p>
       <Footer />
