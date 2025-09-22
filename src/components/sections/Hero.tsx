@@ -4,6 +4,7 @@ import Image from 'next/image';
 import RocketIcon from '../common/rocket';
 import Work from './Work';
 import Footer from './Footer';
+import Skills from './Skills';
 
 const Hero = () => {
   return (
@@ -122,8 +123,8 @@ const Hero = () => {
       </div>
       <div className='w-full h-[2px] bg-[#cccccc8b]  flex justify-center  mt-28 lg:mt-16'></div>
       <Work />
+      <Skills />
       <div className=' h-[2px] w-full bg-[#cccccc8b]  '></div>
-
       <Image
         className='flex  justify-center max-h-[300px]  object-cover object-center'
         src={'/line.png'}

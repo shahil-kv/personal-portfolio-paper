@@ -112,7 +112,7 @@ const Work = () => {
           </div>
         </div>
       </div>
-      <div className='flex flex-col  justify-center  gap-14  w-full'>
+      <div className='flex flex-col  justify-center  gap-14  w-full mb-20'>
         <div className='flex flex-col lg:flex-row lg:gap-16 justify-center items-center w-full'>
           <div className='flex flex-col   items-center justify-center max-w-[300px] lg:max-w-[650px] w-full  mt-10'>
             <Image
