@@ -1,15 +1,12 @@
 import React from 'react';
-import Header from '../layout/Header';
 import Image from 'next/image';
 import RocketIcon from '../common/rocket';
 import Work from './Work';
-import Footer from './Footer';
 import Skills from './Skills';
 
 const Hero = () => {
   return (
     <div className='w-full flex-col flex items-center  '>
-      <Header />
       <div className='px-6 py-24 lg:py-0  flex flex-col lg:flex-row  lg:items-center lg:justify-center lg:gap-30 w-full lg:w-full'>
         <div className='w-full flex flex-col lg:ml-16  max-w-lg justify-center  lg:mt-80'>
           <p className='font-family-dm-sans font-extralight lg:text-2xl'>
@@ -146,7 +143,6 @@ const Hero = () => {
       <p className='text-center  lg:text-xl text-primary mt-80  font-family-dm-sans mb-14'>
         a bucket full of ideas waiting to spill
       </p>
-      <Footer />
     </div>
   );
 };

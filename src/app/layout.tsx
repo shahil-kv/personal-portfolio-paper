@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Nanum_Pen_Script, DM_Sans } from 'next/font/google';
 import '../styles/global.css';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/sections/Footer';
+
+import { Geist, Geist_Mono, Nanum_Pen_Script, DM_Sans } from 'next/font/google';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,9 +39,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${nanumPenScript.variable} ${geistMono.variable} ${dmSans} antialiased`}
+        className={`bg-[url("/paper.png")] bg-repeat bg-left-top ${geistSans.variable} ${nanumPenScript.variable} ${geistMono.variable} ${dmSans} antialiased`}
       >
-        {children}
+        <div className='flex min-h-screen w-full flex-col'>
+          <Header />
+          <main className='flex-grow'>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
