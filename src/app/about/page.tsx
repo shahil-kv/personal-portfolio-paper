@@ -15,9 +15,7 @@ const page = () => {
           height={100}
         />
         <Image
-          src={
-            'https://framerusercontent.com/images/Ghnjg0ohCOel7y4k7Mw4IRwnU.png'
-          }
+          src={''}
           className='rounded-xl w-[150px]'
           alt='profile'
           width={100}
@@ -37,7 +35,7 @@ const page = () => {
           creating things that add real value to people’s lives has always
           brought me joy.
         </p>
-        <p className='text-[12px] mb-5 text-[#8E8570]'>
+        {/* <p className='text-[12px] mb-5 text-[#8E8570]'>
           <span>i started designbucket during the lockdown, </span> <br />
           the idea was simple: to have a container on the internet where i could
           keep putting things i made, and now i am bringing that here.
@@ -54,7 +52,7 @@ const page = () => {
           of maker lab with a wood-working space, pottery wheels, metal tools,
           and a software design lab. a space where tinkerers can come together
           to experiment, build, learn from each other, and just… make things.
-        </p>
+        </p> */}
       </div>
     </div>
   );
