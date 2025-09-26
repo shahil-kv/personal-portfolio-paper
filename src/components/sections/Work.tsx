@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Work = () => {
@@ -30,129 +31,232 @@ const Work = () => {
             <Image
               className='  h-auto object-fill  bg-cover bg-no-repeat'
               alt='work_images_temp'
-              src={'/dummyImage.png'}
+              src={'/project.svg'}
               width={2520}
               height={1540}
             />
           </div>
           <div className='w-full flex flex-col sm:px-6 lg:px-0  max-w-[350px]'>
             <p className='font-family-dm-sans text-left text-[13px] mt-10 w-[330px] text-text font-medium'>
-              voyagemath
+              Product
             </p>
             <p className='font-family-dm-sans text-left text-[18px] w-[330px] text-primary font-medium'>
-              boosting user activation
+              Flaro AI Malayalam Calling Agent
             </p>
             <p className='font-family-dm-sans lg:text-[16px] text-[14px] mt-2 mb-4 text-text font-medium w-[300px]'>
-              making an onboarding journey to improve user activation for a math
-              practice tool
+              An AI-powered calling agent that can make calls in Malayalam to
+              schedule appointments, conduct surveys, and provide customer
+              support.
             </p>
-            <button className='text-left relative font-display w-[330px]'>
-              <Image
-                className='w-40 h-10 opacity-70 '
-                src={'/button.png'}
-                alt='button'
-                width={1220}
-                height={392}
-              />
-              <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
-                View Project
-              </p>
-              <Image
-                className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
-                src={'/lamb.png'}
-                alt='lamb'
-                width={70}
-                height={55}
-              />
-            </button>
+            <div className='flex  flex-col '>
+              <Link
+                href='http://flaro.co'
+                target='_blank'
+                className='mb-4'
+                rel='noopener noreferrer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    View Project
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
+                    src={'/lamb.png'}
+                    alt='lamb'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+              <Link
+                href='https://github.com/shahil-kv/Flaro_Web'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    Github
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-3 left-34'
+                    src={'/github.svg'}
+                    alt='github'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-      <div className='flex flex-col  justify-center  gap-14  w-full mt-20 mb-20'>
+      <div className='flex flex-col  justify-center  gap-14  w-full'>
         <div className='flex flex-col lg:flex-row lg:gap-16 justify-center items-center w-full'>
           <div className='flex flex-col   items-center justify-center max-w-[300px] lg:max-w-[650px] w-full  mt-10'>
             <Image
               className='  h-auto object-fill  bg-cover bg-no-repeat'
               alt='work_images_temp'
-              src={'/dummyImage.png'}
+              src={'/project2.svg'}
               width={2520}
               height={1540}
             />
           </div>
-          <div className='w-full flex flex-col sm:px-6 lg:px-0  max-w-[350px]'>
+          <div className='w-full flex flex-col sm:px-6 lg:px-0  max-w-[350px] my-10 lg:my-32'>
             <p className='font-family-dm-sans text-left text-[13px] mt-10 w-[330px] text-text font-medium'>
-              voyagemath
+              Personal Project
             </p>
             <p className='font-family-dm-sans text-left text-[18px] w-[330px] text-primary font-medium'>
-              boosting user activation
+              Secure Pass (Personal Password Manager)
             </p>
             <p className='font-family-dm-sans lg:text-[16px] text-[14px] mt-2 mb-4 text-text font-medium w-[300px]'>
-              making an onboarding journey to improve user activation for a math
-              practice tool
+              A secure password manager that helps users store and manage their
+              passwords safely and conveniently.
             </p>
-            <button className='text-left relative font-display w-[330px]'>
-              <Image
-                className='w-40 h-10 opacity-70 '
-                src={'/button.png'}
-                alt='button'
-                width={1220}
-                height={392}
-              />
-              <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
-                View Project
-              </p>
-              <Image
-                className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
-                src={'/lamb.png'}
-                alt='lamb'
-                width={70}
-                height={55}
-              />
-            </button>
+            <div className='flex  flex-col '>
+              <Link
+                href='https://ilocks.web.app/'
+                target='_blank'
+                className='mb-4 cursor-pointer'
+                rel='noopener noreferrer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    View Project
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
+                    src={'/lamb.png'}
+                    alt='lamb'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+              <Link
+                href='https://github.com/shahil-kv/securePass'
+                target='_blank'
+                rel='noopener noreferrer cursor-pointer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    Github
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-3 left-34'
+                    src={'/github.svg'}
+                    alt='github'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-      <div className='flex flex-col  justify-center  gap-14  w-full mb-20'>
+      <div className='flex flex-col  justify-center  gap-14  w-full'>
         <div className='flex flex-col lg:flex-row lg:gap-16 justify-center items-center w-full'>
           <div className='flex flex-col   items-center justify-center max-w-[300px] lg:max-w-[650px] w-full  mt-10'>
             <Image
               className='  h-auto object-fill  bg-cover bg-no-repeat'
               alt='work_images_temp'
-              src={'/dummyImage.png'}
+              src={'/project3.svg'}
               width={2520}
               height={1540}
             />
           </div>
           <div className='w-full flex flex-col sm:px-6 lg:px-0  max-w-[350px]'>
             <p className='font-family-dm-sans text-left text-[13px] mt-10 w-[330px] text-text font-medium'>
-              voyagemath
+              Hobby Project
             </p>
             <p className='font-family-dm-sans text-left text-[18px] w-[330px] text-primary font-medium'>
-              boosting user activation
+              Pure Vanila Javascript Illustrator App
             </p>
             <p className='font-family-dm-sans lg:text-[16px] text-[14px] mt-2 mb-4 text-text font-medium w-[300px]'>
-              making an onboarding journey to improve user activation for a math
-              practice tool
+              A pure vanilla javascript illustrator app that can be used to
+              create illustrations for your next project.
             </p>
-            <button className='text-left relative font-display w-[330px]'>
-              <Image
-                className='w-40 h-10 opacity-70 '
-                src={'/button.png'}
-                alt='button'
-                width={1220}
-                height={392}
-              />
-              <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
-                View Project
-              </p>
-              <Image
-                className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
-                src={'/lamb.png'}
-                alt='lamb'
-                width={70}
-                height={55}
-              />
-            </button>
+            <div className='flex  flex-col '>
+              <Link
+                href='https://shahil-kv.github.io/illustractor/'
+                target='_blank'
+                className='mb-4'
+                rel='noopener noreferrer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    View Project
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-2 left-34'
+                    src={'/lamb.png'}
+                    alt='lamb'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+              <Link
+                href='https://github.com/shahil-kv/illustractor'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <button className='text-left relative font-display w-[330px]'>
+                  <Image
+                    className='w-40 h-10 opacity-70 '
+                    src={'/button.png'}
+                    alt='button'
+                    width={1220}
+                    height={392}
+                  />
+                  <p className='absolute left-10 lg:left-5 lg:top-1 top-2 text-text lg:text-2xl'>
+                    Github
+                  </p>
+                  <Image
+                    className='max-w-[70px] hidden lg:block absolute -top-3 left-34'
+                    src={'/github.svg'}
+                    alt='github'
+                    width={70}
+                    height={55}
+                  />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

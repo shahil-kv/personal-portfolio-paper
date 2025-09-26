@@ -1,13 +1,34 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import RocketIcon from '../common/rocket';
 import Work from './Work';
 import Skills from './Skills';
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useVelocity,
+} from 'framer-motion';
 
 const Hero = () => {
+  const { scrollYProgress, scrollY } = useScroll();
+  const scrollYVelocity = useVelocity(scrollY);
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 250]); // Larger vertical float
+  const x = useTransform(scrollYProgress, [0, 0.5, 1], [-50, 250, -50]); // Wide horizontal drift
+  const rotate = useTransform(scrollYVelocity, [-1000, 1000], [-25, 25], {
+    clamp: true,
+  });
+
+  const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
+  const smoothX = useSpring(x, { stiffness: 100, damping: 30 });
+  const smoothRotate = useSpring(rotate, { stiffness: 400, damping: 30 });
+
   return (
     <div className='w-full flex-col flex items-center  '>
-      <div className='px-6 py-24 lg:py-0  flex flex-col lg:flex-row  lg:items-center lg:justify-center lg:gap-30 w-full lg:w-full'>
+      <div className='px-6 py-24 lg:py-0  flex flex-col lg:flex-row  md:px-48 lg:px-6 items-center lg:justify-center lg:gap-30 w-full lg:w-full'>
         <div className='w-full flex flex-col lg:ml-16  max-w-lg justify-center  lg:mt-80'>
           <p className='font-family-dm-sans font-extralight lg:text-2xl'>
             hello, I am
@@ -40,17 +61,33 @@ const Hero = () => {
               />
             </g>
           </svg>
+
           <h1 className='font-display text-7xl my-2 lg:text-[140px]'>Shahil</h1>
+
           <p className='font-family-dm-sans text-[#484848] font-extralight  max-w-80 lg:text-2xl  lg:font-light lg:max-w-[500px]'>
             a builder who loves to build and create amazing products that makes
             a difference.
           </p>
         </div>
-        <div className=' lg:w-[950px] w-full   mt-16 max-w-[500px]'>
-          <RocketIcon />
+        <div className='relative lg:w-[950px] w-full   mt-16 max-w-[500px]'>
+          <motion.div
+            style={{
+              y: smoothY,
+              x: smoothX,
+              rotate: smoothRotate,
+            }}
+            className='absolute lg:fixed z-50 lg:top-40'
+          >
+            <RocketIcon />
+          </motion.div>
+
           <div className='relative inset-0 mt-24 lg:mt-0'>
-            <div className='absolute z-20 max-w-[120px] rotate-[7deg] left-18 lg:left-24 -top-33  lg:-top-40 lg:max-w-[11rem]  '>
-              <a href=''>
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className='absolute z-20 max-w-[120px] rotate-[7deg] left-18 lg:left-24 -top-33  lg:-top-40 lg:max-w-[11rem]  '
+            >
+              <a href='http://flaro.co'>
                 <Image
                   src={'/startupdecoration.png'}
                   width={600}
@@ -63,9 +100,13 @@ const Hero = () => {
                   <p className='text-center font-display text-xl'>Start Up</p>
                 </div>
               </div>
-            </div>
-            <div className='absolute left-[10px] rotate-[-6deg]  max-w-[140px] lg:-top-25 -top-20  z-20 lg:max-w-[11rem]'>
-              <a href=''>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className='absolute left-[10px] rotate-[-6deg]  max-w-[140px] lg:-top-25 -top-20  z-20 lg:max-w-[11rem]'
+            >
+              <a href='/about'>
                 <Image
                   src={'/aboutme.png'}
                   width={600}
@@ -78,9 +119,13 @@ const Hero = () => {
                   <p className='text-center font-display text-xl'>about me</p>
                 </div>
               </div>
-            </div>
-            <div className='absolute lg:-top-20 -top-14 left-26 lg:left-38 rotate-[7deg]  max-w-[130px] lg:max-w-[11rem] z-20'>
-              <a href=''>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+              className='absolute lg:-top-20 -top-14 left-26 lg:left-38 rotate-[7deg]  max-w-[130px] lg:max-w-[11rem] z-20'
+            >
+              <a href='/work'>
                 <Image
                   src={'/workimage.png'}
                   width={600}
@@ -93,7 +138,7 @@ const Hero = () => {
                   <p className='text-center font-display text-xl'>works</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
             <Image
               className='absolute inset-0  max-w-64 top-[-23px] lg:max-w-[22rem] '
               src={'/ringhandle.png'}

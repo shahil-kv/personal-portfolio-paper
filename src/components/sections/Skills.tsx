@@ -1,9 +1,152 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import {
+  motion,
+  useScroll,
+  MotionValue,
+  transform,
+  motionValue,
+} from 'framer-motion';
+
+type Skill = {
+  name: string;
+  icon: string;
+};
+
+const skills: Skill[] = [
+  { name: 'React JS', icon: '/react.png' },
+  { name: 'Next.js', icon: '/react.png' },
+  { name: 'TypeScript', icon: '/react.png' },
+  { name: 'JavaScript', icon: '/react.png' },
+  { name: 'Tailwind CSS', icon: '/react.png' },
+  { name: 'Framer Motion', icon: '/react.png' },
+];
+
+type SkillItemProps = {
+  skill: Skill;
+  index: number;
+  scrollYProgress: MotionValue<number>;
+  animationDone: boolean;
+};
+
+const SkillItem = ({
+  skill,
+  index,
+  scrollYProgress,
+  animationDone,
+}: SkillItemProps) => {
+  const x = motionValue(600);
+  const y = motionValue(100);
+  const rotate = motionValue(0);
+
+  useEffect(() => {
+    const finalX = 150 + (index % 3) * 250;
+    const finalY = -50 + Math.floor(index / 3) * 250;
+
+    if (animationDone) {
+      x.set(finalX);
+      y.set(finalY);
+      rotate.set(0);
+      return;
+    }
+
+    const updatePositions = (latest: number) => {
+      const tiltStart = 0.1;
+      const tiltEnd = 0.2;
+      const fallStart = 0.2;
+      const fallEnd = fallStart + 0.2 + index * 0.05;
+
+      const bucketX = 600;
+      const bucketY = -450;
+
+      const fallStartX = bucketX - 100;
+      const fallStartY = bucketY + 50;
+
+      if (latest < tiltStart) {
+        x.set(bucketX);
+        y.set(bucketY + index * 50);
+        rotate.set(0);
+      } else if (latest >= tiltStart && latest <= tiltEnd) {
+        const progress = transform(latest, [tiltStart, tiltEnd], [0, 1]);
+        x.set(transform(progress, [0, 1], [bucketX, fallStartX]));
+        y.set(transform(progress, [0, 1], [bucketY + index * 50, fallStartY]));
+        rotate.set(transform(progress, [0, 1], [0, -60]));
+      } else if (latest > fallStart && latest < fallEnd) {
+        const progress = transform(latest, [fallStart, fallEnd], [0, 1]);
+        x.set(transform(progress, [0, 1], [fallStartX, finalX]));
+        y.set(transform(progress, [0, 1], [fallStartY, finalY]));
+        rotate.set(transform(progress, [0, 1], [-60, 0]));
+      } else {
+        x.set(finalX);
+        y.set(finalY);
+        rotate.set(0);
+      }
+    };
+
+    const unsubscribe = scrollYProgress.onChange(updatePositions);
+    updatePositions(scrollYProgress.get());
+
+    return () => unsubscribe();
+  }, [scrollYProgress, x, y, rotate, index, animationDone]);
+
+  return (
+    <motion.div style={{ y, x, rotate }} className='absolute z-20'>
+      <div className='bg-white/80 pt-2  min-w-[200px]  shadow-xl   px-4 max-w-[200px]'>
+        <Image
+          className=' w-full object-center border-black/10 border-2  object-contain '
+          src={skill.icon}
+          alt={skill.name}
+          width={100}
+          height={100}
+        />
+        <p className='text-center text-xl py-2 font-display text-primary'>
+          {skill.name}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
 
 const Skills = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center'],
+  });
+  const [animationDone, setAnimationDone] = useState(false);
+
+  const lastItemIndex = skills.length - 1;
+  const animationEndThreshold = 0.2 + 0.2 + lastItemIndex * 0.05;
+
+  const bucketRotate = motionValue(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (animationDone) {
+      bucketRotate.set(0);
+      return;
+    }
+
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      if (latest >= animationEndThreshold) {
+        setAnimationDone(true);
+      } else if (latest >= 0.1 && latest <= 0.2) {
+        const newRotate = transform(latest, [0.1, 0.2], [0, -60]);
+        bucketRotate.set(newRotate);
+      } else if (latest < 0.1) {
+        bucketRotate.set(0);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, animationDone, bucketRotate, animationEndThreshold]);
+
   return (
-    <div className='relative w-full max-w-[1150px] min-h-[70rem] overflow-hidden mb-30 lg:mb-40'>
+    <div
+      ref={containerRef}
+      className='relative w-full max-w-[1150px] min-h-[70rem] mb-30 lg:mb-40'
+    >
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-[url('/boxes.png')] bg-repeat bg-[length:1320px_1570px] bg-center opacity-30"
@@ -18,7 +161,7 @@ const Skills = () => {
         <div className='flex items-center justify-around h-[400px] lg:h-[700px] w-full'>
           <div>
             <h1 className='font-display  relative text-6xl lg:text-8xl   text-left inline-block lg:w-full lg:max-w-[63rem] text-gray-700'>
-              Skills {/* SVG Underline */}
+              Skills
               <svg
                 viewBox='0 0 166.632 21.953'
                 overflow='visible'
@@ -36,13 +179,12 @@ const Skills = () => {
               </svg>
             </h1>
             <p className='text-2xl font-family-dm-sans text-gray-700 max-w-xs leading-8'>
-              {' '}
               skills mean nothing until they build something real.
             </p>
           </div>
-          <div
-            className='relative lg:block
-           hidden'
+          <motion.div
+            style={{ rotate: bucketRotate }}
+            className='relative lg:block hidden'
           >
             <Image
               className=' inset-0  max-w-64  lg:max-w-[22rem] '
@@ -95,51 +237,41 @@ const Skills = () => {
             </svg>
 
             <div className='absolute bottom-0  h-[2px] w-full bg-[#cccccc8b]  '></div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Skills Content Area */}
-        <div className=' gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center mb-20'>
-          {/* Add your skills content here */}
-          <div className='bg-white/80 pt-2  min-w-[250px]  shadow-xl   px-4 max-w-[250px] md:max-w-[500px] lg:max-w-[700px]'>
-            {/* <Image src={}/> */}
-            <Image
-              className=' w-full object-center border-black/10 border-2  object-contain '
-              src={'/react.png'}
-              alt='react'
-              width={100}
-              height={100}
-            />
-            <p className='text-center text-xl py-2 font-display text-primary'>
-              React JS
-            </p>
-          </div>
-          <div className='bg-white/80 pt-2   shadow-xl min-w-[250px]  px-4 max-w-[250px] md:max-w-[500px] lg:max-w-[700px]'>
-            {/* <Image src={}/> */}
-            <Image
-              className=' w-full object-center border-black/10 border-2  object-contain'
-              src={'/react.png'}
-              alt='react'
-              width={100}
-              height={100}
-            />
-            <p className='text-center text-xl  py-2 font-display text-primary'>
-              React JS
-            </p>
-          </div>
-          <div className='bg-white/80 pt-2 object-contain   shadow-xl min-w-[250px]  px-4 max-w-[250px] md:max-w-[500px] lg:max-w-[700px]'>
-            {/* <Image src={}/> */}
-            <Image
-              className=' w-full object-center border-black/10 border-2  object-cover object-'
-              src={'/react.png'}
-              alt='react'
-              width={100}
-              height={100}
-            />
-            <p className='text-center text-xl py-2 font-display text-primary'>
-              React JS
-            </p>
-          </div>
+        <div className='hidden lg:block'>
+          <>
+            {skills.map((skill, index) => (
+              <SkillItem
+                key={skill.name}
+                skill={skill}
+                index={index}
+                scrollYProgress={scrollYProgress}
+                animationDone={animationDone}
+              />
+            ))}
+          </>
+        </div>
+        <div className='gap-8 grid grid-cols-1 md:grid-cols-2 justify-items-center mb-20 px-4 lg:hidden'>
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className='bg-white/80 pt-2 min-w-[250px] shadow-xl px-4 max-w-[250px]'
+            >
+              <Image
+                className='w-full object-center border-black/10 border-2 object-contain'
+                src={skill.icon}
+                alt={skill.name}
+                width={100}
+                height={100}
+              />
+              <p className='text-center text-xl py-2 font-display text-primary'>
+                {skill.name}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
