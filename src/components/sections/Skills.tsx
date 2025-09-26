@@ -15,12 +15,12 @@ type Skill = {
 };
 
 const skills: Skill[] = [
-  { name: 'React JS', icon: '/react.png' },
-  { name: 'Next.js', icon: '/react.png' },
-  { name: 'TypeScript', icon: '/react.png' },
-  { name: 'JavaScript', icon: '/react.png' },
-  { name: 'Tailwind CSS', icon: '/react.png' },
-  { name: 'Framer Motion', icon: '/react.png' },
+  { name: 'React JS', icon: '/react.svg' },
+  { name: 'Postgres Sql', icon: '/postgres.svg' },
+  { name: 'Tailwind Css', icon: '/tailwindcss.svg' },
+  { name: 'Github', icon: '/github.svg' },
+  { name: 'Node Js', icon: '/node.svg' },
+  { name: 'Angular', icon: '/angular.svg' },
 ];
 
 type SkillItemProps = {
@@ -58,7 +58,7 @@ const SkillItem = ({
       const fallEnd = fallStart + 0.2 + index * 0.05;
 
       const bucketX = 600;
-      const bucketY = -450;
+      const bucketY = -650;
 
       const fallStartX = bucketX - 100;
       const fallStartY = bucketY + 50;
@@ -194,7 +194,7 @@ const Skills = () => {
               height={132}
             />
             <Image
-              className='w-full  max-w-64 lg:max-w-[22rem] z-30'
+              className='w-full  max-w-64 lg:max-w-[22rem] z-40'
               src={'/bucket.png'}
               alt='main_bucket'
               width={1428}
