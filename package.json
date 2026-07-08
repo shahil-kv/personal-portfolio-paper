@@ -11,7 +11,7 @@
   "dependencies": {
     "framer-motion": "^12.23.21",
     "motion": "^12.23.21",
-    "next": "15.5.2",
+    "next": "^16.2.10",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1"
