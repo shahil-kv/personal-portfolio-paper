@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import RocketIcon from '../common/rocket';
 import Work from './Work';
 import Skills from './Skills';
@@ -106,14 +107,14 @@ const Hero = () => {
               transition={{ type: 'spring', stiffness: 300 }}
               className='absolute left-[10px] rotate-[-6deg]  max-w-[140px] lg:-top-25 -top-20  z-20 lg:max-w-[11rem]'
             >
-              <a href='/about'>
+              <Link href='/about'>
                 <Image
                   src={'/aboutme.png'}
                   width={600}
                   height={140}
                   alt='aboutme'
                 />
-              </a>
+              </Link>
               <div className=' absolute w-fit px-1  bg-[rgb(240,230,206)] shadow-[1px_1px_0px_0px_rgb(204,181,126)] opacity-100 z-20  top-5 left-3 rotate-[-1deg] max-w-[350px]'>
                 <div className='outline-none flex flex-col justify-start shrink-0 transform-none opacity-100 text-[rgb(105,105,105)]'>
                   <p className='text-center font-display text-xl'>about me</p>
@@ -125,14 +126,14 @@ const Hero = () => {
               transition={{ type: 'spring', stiffness: 300 }}
               className='absolute lg:-top-20 -top-14 left-26 lg:left-38 rotate-[7deg]  max-w-[130px] lg:max-w-[11rem] z-20'
             >
-              <a href='/#work'>
+              <Link href='/#work'>
                 <Image
                   src={'/workimage.png'}
                   width={600}
                   height={150}
                   alt='workimage'
                 />
-              </a>
+              </Link>
               <div className=' absolute w-fit px-1 bg-[rgb(227,223,218)] shadow-[1px_1px_0px_0px_rgb(176,175,174)] opacity-100 z-20  top-5 left-2 rotate-[-1deg]'>
                 <div className='outline-none flex flex-col justify-start shrink-0 transform-none opacity-100 text-[rgb(105,105,105)]'>
                   <p className='text-center font-display text-xl'>works</p>
