@@ -1,4 +1,4 @@
-Project Url :(https://shahil-ef7d1.web.app/). This is a
+Project Url :(https://shahil-livid.vercel.app/). This is a
 [Next.js](https://nextjs.org) project bootstrapped with
 [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
