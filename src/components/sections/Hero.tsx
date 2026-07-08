@@ -87,7 +87,7 @@ const Hero = () => {
               transition={{ type: 'spring', stiffness: 300 }}
               className='absolute z-20 max-w-[120px] rotate-[7deg] left-18 lg:left-24 -top-33  lg:-top-40 lg:max-w-[11rem]  '
             >
-              <a href='http://flaro.co'>
+              <a href='/Shahil%20Resume.pdf' target='_blank' rel='noopener noreferrer' download>
                 <Image
                   src={'/startupdecoration.png'}
                   width={600}
@@ -97,7 +97,7 @@ const Hero = () => {
               </a>
               <div className=' absolute w-fit px-1  bg-[rgb(242,225,229)] shadow-[1px_1px_0px_0px_rgb(207,169,177)] opacity-100 z-20  top-5 left-2'>
                 <div className='outline-none flex flex-col justify-start shrink-0 transform-none opacity-100 text-[rgb(105,105,105)]'>
-                  <p className='text-center font-display text-xl'>Start Up</p>
+                  <p className='text-center font-display text-xl'>resume</p>
                 </div>
               </div>
             </motion.div>
@@ -125,7 +125,7 @@ const Hero = () => {
               transition={{ type: 'spring', stiffness: 300 }}
               className='absolute lg:-top-20 -top-14 left-26 lg:left-38 rotate-[7deg]  max-w-[130px] lg:max-w-[11rem] z-20'
             >
-              <a href='/work'>
+              <a href='/#work'>
                 <Image
                   src={'/workimage.png'}
                   width={600}
