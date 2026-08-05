@@ -3,10 +3,21 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className='flex flex-row w-full border-t border-t-black/5 justify-between items-center lg:p-11 px-6 py-6'>
-      <p className='font-display text-[20px] lg:text-4xl text-primary'>
-        Made with love :)
-      </p>
+    <footer className='flex flex-row w-full border-t border-t-black/5 justify-between items-center lg:p-11 px-6 py-6'>
+      <div className='flex items-center gap-3'>
+        <div className='relative w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden border border-black/15 shadow-xs shrink-0'>
+          <Image
+            src='/shahilimage.JPG'
+            alt='Shahil Logo'
+            fill
+            sizes='(max-width: 768px) 32px, 40px'
+            className='object-cover'
+          />
+        </div>
+        <p className='font-display text-[20px] lg:text-4xl text-primary'>
+          Made with love :)
+        </p>
+      </div>
       <div className='flex gap-4 items-center'>
         <a href='https://www.instagram.com/_shahilee/' target="_blank" rel="noopener noreferrer">
           <Image
@@ -38,7 +49,7 @@ const Footer = () => {
           />
         </a>
       </div>
-    </div>
+    </footer>
   );
 };
 
