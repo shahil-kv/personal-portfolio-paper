@@ -8,7 +8,12 @@ type Page = { marker: string; label: string; short?: string; href: string };
 const pages: Page[] = [
   { marker: 'p.01', label: 'Cover', href: '/' },
   { marker: 'p.02', label: 'On film', href: '/#film' },
-  { marker: 'p.03', label: "Where I've worked", short: 'Work', href: '/#experience' },
+  {
+    marker: 'p.03',
+    label: "Where I've worked",
+    short: 'Experience',
+    href: '/#experience',
+  },
   { marker: 'p.04', label: 'Built', href: '/#built' },
   { marker: 'p.05', label: 'Stack', href: '/#stack' },
   { marker: 'p.06', label: 'Find me', href: '/#find-me' },
