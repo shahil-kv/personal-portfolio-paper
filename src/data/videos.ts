@@ -1,6 +1,8 @@
 export const INSTAGRAM_PROFILE = 'https://www.instagram.com/_shahilee/';
 export const INSTAGRAM_HANDLE = '@_shahilee';
-export const FOLLOWERS = '5,965';
+/* Rounded on purpose: this is a static export, so nothing can keep an
+   exact count current. Bump it when it's meaningfully wrong. */
+export const FOLLOWERS = '~6,000';
 export const VIDEO_COUNT = 46;
 
 export type Video = {

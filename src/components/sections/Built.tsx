@@ -1,11 +1,12 @@
-import Image from 'next/image';
 import Sheet from '../notebook/Sheet';
 import Annotation from '../notebook/Annotation';
 import { projects } from '@/data/projects';
 
+const GITHUB_REPOS = 'https://github.com/shahil-kv?tab=repositories';
+const SHOWN = 3;
+
 export default function Built() {
-  const clientCount = projects.filter((p) => p.kind === 'Client work').length;
-  const openCount = projects.filter((p) => p.kind === 'Open source').length;
+  const latest = projects.slice(0, SHOWN);
 
   return (
     <Sheet id='built' marker='p.04'>
@@ -17,10 +18,9 @@ export default function Built() {
       </p>
 
       <p className='t-label mt-6'>
-        {clientCount} client
-        <span className='mx-2 text-rule'>/</span>1 startup
+        Three most recent
         <span className='mx-2 text-rule'>/</span>
-        {openCount} open source
+        {projects.length} in total
       </p>
 
       <Annotation direction='down' className='mt-7'>
@@ -28,10 +28,10 @@ export default function Built() {
       </Annotation>
 
       <ol className='mt-5'>
-        {projects.map((project) => (
+        {latest.map((project) => (
           <li
             key={project.id}
-            className='grid gap-x-8 gap-y-4 border-t border-rule py-8 sm:grid-cols-[5rem_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_9rem]'
+            className='grid gap-x-8 gap-y-3 border-t border-rule py-8 sm:grid-cols-[5rem_minmax(0,1fr)]'
           >
             <div className='t-label pt-1'>{project.year}</div>
 
@@ -80,21 +80,18 @@ export default function Built() {
               </div>
             </div>
 
-            {/* Only real screenshots get a frame. */}
-            {project.image && (
-              <div className='duotone relative hidden aspect-[4/3] w-full self-start border border-rule lg:block'>
-                <Image
-                  src={project.image}
-                  alt=''
-                  fill
-                  sizes='9rem'
-                  className='object-cover'
-                />
-              </div>
-            )}
           </li>
         ))}
       </ol>
+
+      <a
+        href={GITHUB_REPOS}
+        target='_blank'
+        rel='noopener noreferrer'
+        className='lnk t-label mt-10 inline-block'
+      >
+        Browse every repo on GitHub ↗
+      </a>
     </Sheet>
   );
 }

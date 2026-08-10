@@ -209,6 +209,7 @@
 
   .duotone img {
     filter: grayscale(1) brightness(1.32) contrast(0.86);
+    transition: filter 0.35s ease;
   }
 
   .duotone::before,
@@ -217,6 +218,32 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Colour returns on hover. The switch is the tell that this is a video,
+     and it rescues detail the duotone flattens (the MCP diagram, the
+     Claude mark) without letting colour loose on the resting page. */
+  .duotone--reveal:hover img,
+  .duotone--reveal:focus-within img {
+    filter: none;
+  }
+
+  .duotone--reveal:hover::before,
+  .duotone--reveal:hover::after,
+  .duotone--reveal:focus-within::before,
+  .duotone--reveal:focus-within::after {
+    opacity: 0;
+  }
+
+  /* Swipe strip on phones — no visible scrollbar over the ruled ground. */
+  .strip {
+    scrollbar-width: none;
+    scroll-padding-left: 0;
+  }
+
+  .strip::-webkit-scrollbar {
+    display: none;
   }
 
   .duotone::before {

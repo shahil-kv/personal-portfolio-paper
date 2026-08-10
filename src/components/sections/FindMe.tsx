@@ -7,16 +7,16 @@ const PHONE_E164 = '917012326928';
 
 const channels = [
   {
-    label: 'Instagram',
-    handle: INSTAGRAM_HANDLE,
-    href: INSTAGRAM_PROFILE,
-    note: 'New builds go up here first',
-  },
-  {
     label: 'WhatsApp',
     handle: PHONE_DISPLAY,
     href: `https://api.whatsapp.com/send/?phone=%2B${PHONE_E164}&text&type=phone_number&app_absent=0`,
-    note: 'For anything that needs a real conversation',
+    note: 'Fastest way to get an answer',
+  },
+  {
+    label: 'Instagram',
+    handle: INSTAGRAM_HANDLE,
+    href: INSTAGRAM_PROFILE,
+    note: 'Where new builds go up first',
   },
   {
     label: 'GitHub',
@@ -43,7 +43,7 @@ export default function FindMe() {
       </p>
 
       <Annotation direction='down' className='mt-7'>
-        instagram gets the fastest reply
+        whatsapp gets the fastest reply
       </Annotation>
 
       <ul className='mt-5'>

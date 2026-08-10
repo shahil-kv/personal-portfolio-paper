@@ -38,6 +38,19 @@ export const projects: Project[] = [
     github: 'https://github.com/shahil-kv/Flaro_Web',
   },
   {
+    id: 'unlink',
+    name: 'Unlink',
+    role: 'Built it, maintain it',
+    year: '2025',
+    kind: 'Open source',
+    summary:
+      'An app for people who want to stop doom scrolling and have decided that willpower alone is not working.',
+    stack: ['React Native', 'Expo'],
+    image: '/unlink.png',
+    live: 'https://www.getunlink.com/',
+    github: 'https://github.com/UnlinkHq/Application/tree/develop',
+  },
+  {
     id: 'petrohse',
     name: 'PetroHSE',
     role: 'Front-end engineer',
@@ -60,19 +73,6 @@ export const projects: Project[] = [
     stack: ['Angular', 'TypeScript', 'SCSS'],
     image: '/epermit.jpg',
     live: 'https://www.petroinfotech.com/#/products/petro-epermit',
-  },
-  {
-    id: 'unlink',
-    name: 'Unlink',
-    role: 'Built it, maintain it',
-    year: '2025',
-    kind: 'Open source',
-    summary:
-      'An app for people who want to stop doom scrolling and have decided that willpower alone is not working.',
-    stack: ['React Native', 'Expo'],
-    image: '/unlink.png',
-    live: 'https://www.getunlink.com/',
-    github: 'https://github.com/UnlinkHq/Application/tree/develop',
   },
   {
     id: 'securepass',

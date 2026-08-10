@@ -14,8 +14,7 @@ export default function OnFilm() {
       <h2 className='t-title'>On film</h2>
 
       <p className='t-lead measure mt-5'>
-        {VIDEO_COUNT} videos{' '}
-        on building with AI tooling — Claude Code, MCP,
+        {VIDEO_COUNT} videos on building with AI tooling — Claude Code, MCP,
         agents that actually ship. Mostly in Malayalam, because that&apos;s who
         I&apos;m talking to.
       </p>
@@ -30,21 +29,26 @@ export default function OnFilm() {
         start with this one
       </Annotation>
 
-      <ul className='mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3'>
+      {/* A swipe strip on phones, a grid from 640px up. Three 4:5 posters
+          stacked full-width is ~1300px of scrolling on a handset. */}
+      <ul className='strip mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-1 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 sm:overflow-visible lg:grid-cols-3'>
         {videos.map((video) => (
-          <li key={video.id}>
+          <li
+            key={video.id}
+            className='w-[74%] shrink-0 snap-start sm:w-auto'
+          >
             <a
               href={video.permalink}
               target='_blank'
               rel='noopener noreferrer'
               className='group block'
             >
-              <div className='duotone relative aspect-[4/5] w-full border border-rule transition-colors group-hover:border-annotate'>
+              <div className='duotone duotone--reveal relative aspect-[4/5] w-full border border-rule transition-colors group-hover:border-annotate'>
                 <Image
                   src={video.poster}
                   alt=''
                   fill
-                  sizes='(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 22rem'
+                  sizes='(max-width: 640px) 74vw, (max-width: 1024px) 46vw, 22rem'
                   className='object-cover'
                 />
               </div>
@@ -70,7 +74,7 @@ export default function OnFilm() {
         href={INSTAGRAM_PROFILE}
         target='_blank'
         rel='noopener noreferrer'
-        className='lnk t-label mt-12 inline-block'
+        className='lnk t-label mt-10 inline-block'
       >
         Watch all {VIDEO_COUNT} on Instagram ↗
       </a>
