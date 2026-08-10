@@ -3,7 +3,7 @@ import { stack } from '@/data/projects';
 
 export default function Stack() {
   return (
-    <Sheet id='stack' marker='p.04'>
+    <Sheet id='stack' marker='p.05'>
       <h2 className='t-title'>Stack</h2>
 
       <p className='t-lead measure mt-5'>

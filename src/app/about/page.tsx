@@ -39,10 +39,14 @@ export default function About() {
         </p>
       </div>
 
-      <div className='relative mt-14 border-t border-rule pt-8'>
+      <div className='mt-14 border-t border-rule pt-8'>
         <h2 className='t-heading'>What I&apos;ve automated</h2>
 
-        <ul className='measure mt-5 space-y-2'>
+        <Annotation direction='down' className='mt-5'>
+          all of these started as something someone did by hand
+        </Annotation>
+
+        <ul className='measure mt-4 space-y-2'>
           {[
             'A Malayalam-speaking AI calling agent that books appointments and runs surveys',
             'Permit-to-work approvals across request, risk assessment and sign-off',
@@ -55,13 +59,6 @@ export default function About() {
             </li>
           ))}
         </ul>
-
-        <Annotation
-          direction='upLeft'
-          className='mt-6 xl:absolute xl:top-6 xl:right-0 xl:mt-0'
-        >
-          all of these started as something someone did by hand
-        </Annotation>
       </div>
     </Sheet>
   );

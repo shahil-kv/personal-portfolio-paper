@@ -2,12 +2,17 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 
-type Direction = 'up' | 'upRight' | 'upLeft' | 'downRight' | 'left';
+type Direction = 'up' | 'down' | 'upRight' | 'upLeft' | 'downRight' | 'left';
 
 const ARROWS: Record<Direction, { viewBox: string; d: string; w: string }> = {
   up: {
     viewBox: '0 0 24 44',
     d: 'M13 43 C 11 31 13 19 12 6 M12 6 L6 16 M12 6 L18 15',
+    w: '1.4rem',
+  },
+  down: {
+    viewBox: '0 0 24 44',
+    d: 'M11 1 C 13 13 11 25 12 38 M12 38 L6 27 M12 38 L18 28',
     w: '1.4rem',
   },
   upRight: {
@@ -51,8 +56,9 @@ export default function Annotation({
 }: Props) {
   const reduced = useReducedMotion();
   const arrow = ARROWS[direction];
-  const vertical = direction === 'up';
-  const arrowFirst = vertical || direction === 'upLeft' || direction === 'left';
+  const vertical = direction === 'up' || direction === 'down';
+  const arrowFirst =
+    direction === 'up' || direction === 'upLeft' || direction === 'left';
 
   return (
     <motion.span

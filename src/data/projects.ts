@@ -15,6 +15,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'valcare',
+    name: 'Valcare Consulting',
+    role: 'Freelance developer',
+    year: '2026',
+    kind: 'Client work',
+    summary:
+      'Client products for a Kochi consultancy working with businesses across Europe and the Middle East — currently a Spanish-language build, so the interface has to read naturally to people who never see the English.',
+    stack: ['Next.js', 'TypeScript', 'i18n'],
+    live: 'https://valcareconsulting.com/',
+  },
+  {
     id: 'flaro',
     name: 'Flaro',
     role: 'Founder, built the product',
@@ -23,7 +34,6 @@ export const projects: Project[] = [
     summary:
       'A calling agent that speaks Malayalam. It books appointments, runs surveys and handles support calls, so small businesses stop losing customers to a phone nobody picks up.',
     stack: ['Next.js', 'Node', 'Postgres', 'Speech AI'],
-    image: '/project.svg',
     live: 'http://flaro.co',
     github: 'https://github.com/shahil-kv/Flaro_Web',
   },
@@ -73,7 +83,6 @@ export const projects: Project[] = [
     summary:
       'A password manager I wrote because I wanted to understand encryption at rest properly rather than read about it.',
     stack: ['React', 'Firebase', 'Web Crypto'],
-    image: '/project2.svg',
     live: 'https://ilocks.web.app/',
     github: 'https://github.com/shahil-kv/securePass',
   },
@@ -86,7 +95,6 @@ export const projects: Project[] = [
     summary:
       'A drawing tool in plain JavaScript. No framework, no canvas library — the point was to find out how far you get without them.',
     stack: ['Vanilla JS', 'Canvas API'],
-    image: '/project3.svg',
     live: 'https://shahil-kv.github.io/illustractor/',
     github: 'https://github.com/shahil-kv/illustractor',
   },

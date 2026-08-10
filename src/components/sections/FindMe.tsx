@@ -1,18 +1,21 @@
 import Sheet from '../notebook/Sheet';
 import Annotation from '../notebook/Annotation';
-import { INSTAGRAM_PROFILE } from '@/data/videos';
+import { INSTAGRAM_PROFILE, INSTAGRAM_HANDLE } from '@/data/videos';
+
+const PHONE_DISPLAY = '+91 70123 26928';
+const PHONE_E164 = '917012326928';
 
 const channels = [
   {
     label: 'Instagram',
-    handle: '@_shahilee',
+    handle: INSTAGRAM_HANDLE,
     href: INSTAGRAM_PROFILE,
     note: 'New builds go up here first',
   },
   {
     label: 'WhatsApp',
-    handle: '+91 98467 86928',
-    href: 'https://api.whatsapp.com/send/?phone=%2B919846786928&text&type=phone_number&app_absent=0',
+    handle: PHONE_DISPLAY,
+    href: `https://api.whatsapp.com/send/?phone=%2B${PHONE_E164}&text&type=phone_number&app_absent=0`,
     note: 'For anything that needs a real conversation',
   },
   {
@@ -31,24 +34,19 @@ const channels = [
 
 export default function FindMe() {
   return (
-    <Sheet id='find-me' marker='p.05'>
-      <div className='relative'>
-        <h2 className='t-title'>Find me</h2>
+    <Sheet id='find-me' marker='p.06'>
+      <h2 className='t-title'>Find me</h2>
 
-        <p className='t-lead measure mt-5'>
-          Working on something that should be automated and isn&apos;t? Tell me
-          what it is.
-        </p>
+      <p className='t-lead measure mt-5'>
+        Working on something that should be automated and isn&apos;t? Tell me
+        what it is.
+      </p>
 
-        <Annotation
-          direction='upRight'
-          className='mt-6 lg:absolute lg:top-0 lg:right-0 lg:mt-0'
-        >
-          instagram gets the fastest reply
-        </Annotation>
-      </div>
+      <Annotation direction='down' className='mt-7'>
+        instagram gets the fastest reply
+      </Annotation>
 
-      <ul className='mt-12'>
+      <ul className='mt-5'>
         {channels.map((channel) => (
           <li key={channel.label} className='border-t border-rule'>
             <a

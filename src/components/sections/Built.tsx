@@ -1,10 +1,14 @@
+import Image from 'next/image';
 import Sheet from '../notebook/Sheet';
 import Annotation from '../notebook/Annotation';
 import { projects } from '@/data/projects';
 
 export default function Built() {
+  const clientCount = projects.filter((p) => p.kind === 'Client work').length;
+  const openCount = projects.filter((p) => p.kind === 'Open source').length;
+
   return (
-    <Sheet id='built' marker='p.03'>
+    <Sheet id='built' marker='p.04'>
       <h2 className='t-title'>Built</h2>
 
       <p className='t-lead measure mt-5'>
@@ -12,15 +16,26 @@ export default function Built() {
         they worked.
       </p>
 
-      <ol className='mt-12'>
-        {projects.map((project, i) => (
+      <p className='t-label mt-6'>
+        {clientCount} client
+        <span className='mx-2 text-rule'>/</span>1 startup
+        <span className='mx-2 text-rule'>/</span>
+        {openCount} open source
+      </p>
+
+      <Annotation direction='down' className='mt-7'>
+        newest freelance work is first
+      </Annotation>
+
+      <ol className='mt-5'>
+        {projects.map((project) => (
           <li
             key={project.id}
-            className='grid gap-x-8 gap-y-3 border-t border-rule py-8 sm:grid-cols-[5.5rem_minmax(0,1fr)]'
+            className='grid gap-x-8 gap-y-4 border-t border-rule py-8 sm:grid-cols-[5rem_minmax(0,1fr)] lg:grid-cols-[5rem_minmax(0,1fr)_9rem]'
           >
             <div className='t-label pt-1'>{project.year}</div>
 
-            <div className='relative'>
+            <div>
               <div className='flex flex-wrap items-baseline gap-x-3'>
                 <h3 className='t-heading'>{project.name}</h3>
                 <span className='t-label'>{project.kind}</span>
@@ -63,16 +78,20 @@ export default function Built() {
                   </a>
                 )}
               </div>
-
-              {i === 0 && (
-                <Annotation
-                  direction='upLeft'
-                  className='mt-5 xl:absolute xl:top-0 xl:right-0 xl:mt-0 xl:translate-x-[calc(100%+1.5rem)]'
-                >
-                  this one is the day job now
-                </Annotation>
-              )}
             </div>
+
+            {/* Only real screenshots get a frame. */}
+            {project.image && (
+              <div className='duotone relative hidden aspect-[4/3] w-full self-start border border-rule lg:block'>
+                <Image
+                  src={project.image}
+                  alt=''
+                  fill
+                  sizes='9rem'
+                  className='object-cover'
+                />
+              </div>
+            )}
           </li>
         ))}
       </ol>
