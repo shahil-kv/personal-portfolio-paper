@@ -1,47 +1,68 @@
-import Image from 'next/image';
-import React from 'react';
+import type { Metadata } from 'next';
+import Sheet from '@/components/notebook/Sheet';
+import Annotation from '@/components/notebook/Annotation';
 
-const page = () => {
-  return (
-    <div className='flex font-family-dm-sans w-full h-[84vh] justify-center   items-center px-4  lg:px-0 mt-5 '>
-      <div className="relative w-full bg-[url('/yellowabout.png')]  px-22 py-10 bg-center max-w-[650px] items-center  bg-cover">
-        <Image
-          src={
-            'https://framerusercontent.com/images/1DAU2T6QMpS5HJsmIxgZEXBLPJ8.svg'
-          }
-          alt='hanger'
-          className='absolute -top-2 max-w-[35px] right-10'
-          width={100}
-          height={100}
-        />
-        <Image
-          src={'/aboutme.png'}
-          className='rounded-xl w-[150px]'
-          alt='profile'
-          width={100}
-          height={100}
-        />
-        <div className='py-6 text-[14px] font-family-dm-sans text-[#8E8570] space-y-4'>
-          <p>
-            I&apos;m a deeply curious builder who loves creating things that people actually need. I enjoy solving real-world problems through automation and digital experiences.
-          </p>
-          <p>
-            When I&apos;m not writing code, you can find me making tech videos on Instagram to share what I&apos;m learning and building with the community. 
-          </p>
-        </div>
-
-        <p className='text-[14px] font-family-dm-sans text-[#8E8570] font-medium mb-3'>
-          A few automations I&apos;ve built:
-        </p>
-        <ul className='text-[14px] text-[#8E8570] list-disc list-inside space-y-2 pb-6'>
-          <li>AI-powered Malayalam Calling Agent (Flaro AI)</li>
-          <li>Permit to Work (PTW) management workflows</li>
-          <li>Custom Slack and Discord integration bots</li>
-          <li>Automated email sequences and data parsing pipelines</li>
-        </ul>
-      </div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Shahil KV — developer and founder from Kerala building automation, AI calling agents and the videos that explain them.',
 };
 
-export default page;
+export default function About() {
+  return (
+    <Sheet marker='p.00'>
+      <h1 className='t-title'>About</h1>
+
+      <div className='measure mt-8 space-y-6'>
+        <p className='t-lead'>
+          I&apos;m a developer and founder from Kerala. I build automation for
+          businesses that are still doing things by hand, and I film the process
+          so other people can copy it.
+        </p>
+
+        <p className='t-body'>
+          Most of my work sits in the same place: a repetitive process, a person
+          spending hours on it, and software that could have handled it. That
+          led to Flaro, a calling agent that speaks Malayalam so small
+          businesses stop losing customers to a phone nobody answers. Before
+          that I spent two years on health-and-safety and permit-to-work systems
+          for oil and gas sites, which is where I learned that the hard part is
+          never the code.
+        </p>
+
+        <p className='t-body'>
+          The videos started as notes to myself. I was learning Claude Code, MCP
+          and agent tooling, and recording it turned out to be the fastest way
+          to find the parts I didn&apos;t understand. Most of them are in
+          Malayalam, because the people I most want to reach aren&apos;t served
+          by English tutorials.
+        </p>
+      </div>
+
+      <div className='relative mt-14 border-t border-rule pt-8'>
+        <h2 className='t-heading'>What I&apos;ve automated</h2>
+
+        <ul className='measure mt-5 space-y-2'>
+          {[
+            'A Malayalam-speaking AI calling agent that books appointments and runs surveys',
+            'Permit-to-work approvals across request, risk assessment and sign-off',
+            'Slack and Discord bots wired into internal tooling',
+            'Email sequences and data-parsing pipelines that used to be spreadsheets',
+          ].map((item) => (
+            <li key={item} className='t-body flex gap-3'>
+              <span className='mt-[0.6em] h-px w-4 shrink-0 bg-rule' />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <Annotation
+          direction='upLeft'
+          className='mt-6 xl:absolute xl:top-6 xl:right-0 xl:mt-0'
+        >
+          all of these started as something someone did by hand
+        </Annotation>
+      </div>
+    </Sheet>
+  );
+}

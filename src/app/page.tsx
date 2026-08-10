@@ -1,5 +1,17 @@
-import Hero from '@/components/sections/Hero';
+import Cover from '@/components/sections/Cover';
+import OnFilm from '@/components/sections/OnFilm';
+import Built from '@/components/sections/Built';
+import Stack from '@/components/sections/Stack';
+import FindMe from '@/components/sections/FindMe';
 
 export default function Home() {
-  return <Hero />;
+  return (
+    <>
+      <Cover />
+      <OnFilm />
+      <Built />
+      <Stack />
+      <FindMe />
+    </>
+  );
 }

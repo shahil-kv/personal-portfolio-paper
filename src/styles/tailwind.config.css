@@ -1,78 +1,296 @@
 @import 'tailwindcss';
 @import './variables.css';
+
 /* =================================================================
-   THEME CONFIGURATION - Design Tokens
+   THEME
    ================================================================= */
 
 @theme inline {
-  /* Brand Colors */
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-territory: var(--territory);
-  --color-text: var(--text-color);
-  --color-forth: var(--forth);
-  --color-fifth: var(--fifth);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-rule: var(--rule);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-annotate: var(--annotate);
+  --color-stamp: var(--stamp);
 
-  /* Semantic Colors */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-
-  /* Typography */
-  --font-display: var(--font-display), 'Nanum Pen Script', 'cursive';
-  --font-family-body: 'Inter', 'system-ui', 'sans-serif';
-  --font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', 'monospace';
-  --font-family-dm-sans: 'DM Sans', 'DM Sans Placeholder', sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-hand: var(--font-caveat), ui-rounded, cursive;
 }
 
 /* =================================================================
-   DARK THEME VARIABLES
+   BASE — the ruled ground
    ================================================================= */
 
-[data-theme='dark'] {
-  --card-background: var(--color-neutral-900);
-  --card-border: var(--color-neutral-700);
-  --text-primary: var(--color-neutral-50);
-  --text-secondary: var(--color-neutral-300);
-  --text-muted: var(--color-neutral-400);
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  /* The desk the sheet sits on. */
+  body {
+    background-color: var(--paper-deep);
+    color: var(--ink);
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: var(--rhythm);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--annotate) 22%, transparent);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--annotate);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 /* =================================================================
-   BASE STYLES
+   TYPE SCALE — six steps
    ================================================================= */
 
-* {
-  box-sizing: border-box;
-}
+@layer components {
+  .t-display {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.25rem, 12vw, 7.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+  }
 
-html {
-  scroll-behavior: smooth;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-}
+  .t-title {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5.5vw, 3.25rem);
+    line-height: 0.96;
+    letter-spacing: -0.028em;
+  }
 
-body {
-  font-family: var(--font-family-body);
-  color: var(--text-primary);
-  background-color: var(--color-neutral-50);
-  line-height: 1.6;
-  transition: var(--theme-transition);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  .t-heading {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
 
-[data-theme='dark'] body {
-  background-color: var(--color-neutral-950);
-}
+  .t-lead {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-size: clamp(1.125rem, 2.1vw, 1.375rem);
+    line-height: 1.55;
+    color: var(--ink);
+  }
 
-/* =================================================================
-   RESPONSIVE DESIGN
-   ================================================================= */
+  .t-body {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: var(--rhythm);
+    color: var(--ink-soft);
+  }
 
-@media (max-width: 768px) {
-  :root {
-    --section-padding-y: 3rem;
-    --section-padding-x: 1rem;
+  .t-label {
+    font-family: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ===============================================================
+     NOTEBOOK STRUCTURE — one vertical margin rule, page markers
+     =============================================================== */
+
+  /* The sheet. Ruled ground lives here, not on body, so empty space
+     inside a section reads as page rather than as broken layout. */
+  .notebook {
+    position: relative;
+    width: 100%;
+    max-width: var(--shell-max);
+    min-height: 100vh;
+    margin-inline: auto;
+    padding-inline: var(--edge);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--rhythm) - 1px),
+      color-mix(in srgb, var(--rule) 32%, transparent) calc(var(--rhythm) - 1px),
+      color-mix(in srgb, var(--rule) 32%, transparent) var(--rhythm)
+    );
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--rule) 55%, transparent);
+  }
+
+  .notebook::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--edge) + var(--gutter));
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .sheet {
+    position: relative;
+    padding-left: calc(var(--gutter) + var(--hang));
+    padding-block: clamp(2.5rem, 7vw, 5.5rem);
+  }
+
+  /* Section rules span the whole sheet, edge to edge. */
+  .sheet + .sheet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(var(--edge) * -1);
+    right: calc(var(--edge) * -1);
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .sheet__marker {
+    position: absolute;
+    left: 0;
+    top: clamp(2.5rem, 7vw, 5.5rem);
+    width: var(--gutter);
+    padding-right: 0.625rem;
+    text-align: right;
+    font-family: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+    font-weight: 500;
+    font-size: 0.625rem;
+    line-height: var(--rhythm);
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    opacity: 0.75;
+  }
+
+  .measure {
+    max-width: var(--measure);
+  }
+
+  /* ===============================================================
+     DUOTONE — every photo is mapped to ink/paper so nothing on the
+     page competes with the annotation red.
+     =============================================================== */
+
+  .duotone {
+    position: relative;
+    isolation: isolate;
+    background: var(--paper-deep);
+    overflow: hidden;
+  }
+
+  .duotone img {
+    filter: grayscale(1) brightness(1.32) contrast(0.86);
+  }
+
+  .duotone::before,
+  .duotone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .duotone::before {
+    background: var(--ink);
+    mix-blend-mode: lighten;
+  }
+
+  .duotone::after {
+    background: var(--paper);
+    mix-blend-mode: darken;
+  }
+
+  /* ===============================================================
+     ANNOTATION LAYER — the signature. Red pencil, hand, drawn in.
+     =============================================================== */
+
+  .anno {
+    font-family: var(--font-caveat), ui-rounded, cursive;
+    font-weight: 600;
+    font-size: clamp(1.0625rem, 2vw, 1.3rem);
+    line-height: 1.12;
+    color: var(--annotate);
+    letter-spacing: 0.01em;
+  }
+
+  .anno__path {
+    stroke: var(--annotate);
+    stroke-width: 1.6;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ===============================================================
+     SMALL PARTS
+     =============================================================== */
+
+  .tag {
+    font-family: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .stamp {
+    font-family: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stamp);
+    border: 1.5px solid var(--stamp);
+    padding: 0.4rem 0.7rem;
+    display: inline-block;
+    transform: rotate(-1.5deg);
+    opacity: 0.9;
+  }
+
+  .lnk {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--rule), var(--rule));
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.18s ease, color 0.18s ease;
+  }
+
+  .lnk:hover {
+    color: var(--annotate);
+    background-image: linear-gradient(var(--annotate), var(--annotate));
   }
 }
 

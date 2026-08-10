@@ -1,8 +1,47 @@
+/* =================================================================
+   FIELD NOTEBOOK — design tokens
+   Paper is cool bone, not cream. Rule is printed cyan-grey.
+   Ink is iron-gall blue-black. Red is correction pencil and is
+   reserved for the annotation layer only.
+   ================================================================= */
+
 :root {
-  --primary: #3e3d41;
-  --secondary: #969997;
-  --text-color: rgb(114, 114, 114);
-  --territory: #9f557f;
-  --forth: #c7a763;
-  --fifth: #ce9eb3;
+  /* Ground */
+  --paper: #e9e8e0;
+  --paper-deep: #dedcd2;
+  --rule: #b9c4c0;
+
+  /* Ink */
+  --ink: #1c2529;
+  --ink-soft: #5a6669;
+
+  /* The only saturated colors on the page */
+  --annotate: #c2452d;
+  --stamp: #2f5d50;
+
+  /* Vertical rhythm — body copy sits on the ruled ground */
+  --rhythm: 30px;
+
+  /* Layout */
+  --shell-max: 1180px;
+  --gutter: 2.25rem;
+  --edge: 1rem;
+  /* Space between the margin rule and the text that hangs off it. */
+  --hang: 0.875rem;
+  --measure: 62ch;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 3.5rem;
+    --edge: 2rem;
+    --hang: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 4.5rem;
+    --edge: 2.5rem;
+  }
 }

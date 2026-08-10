@@ -1,89 +1,92 @@
 import type { Metadata } from 'next';
 import '../styles/global.css';
 import Header from '@/components/layout/Header';
-import Footer from '@/components/sections/Footer';
+import {
+  Bricolage_Grotesque,
+  Newsreader,
+  DM_Mono,
+  Caveat,
+} from 'next/font/google';
 
-import { Geist, Geist_Mono, Nanum_Pen_Script, DM_Sans } from 'next/font/google';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const bricolage = Bricolage_Grotesque({
+  variable: '--font-bricolage',
   subsets: ['latin'],
+  display: 'swap',
 });
 
-const nanumPenScript = Nanum_Pen_Script({
-  variable: '--font-display',
+const newsreader = Newsreader({
+  variable: '--font-newsreader',
   subsets: ['latin'],
-  weight: '400', // Nanum Pen Script only has 400 weight
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const dmMono = DM_Mono({
+  variable: '--font-dm-mono',
   subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
 });
 
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
+const caveat = Caveat({
+  variable: '--font-caveat',
   subsets: ['latin'],
+  display: 'swap',
 });
+
+const SITE = 'https://shahilkv.in';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shahil.co'),
+  metadataBase: new URL(SITE),
   title: {
-    default: 'Shahil | Full Stack Developer & Product Builder',
-    template: '%s | Shahil',
+    default: 'Shahil KV — Developer, founder, automation builder',
+    template: '%s | Shahil KV',
   },
   description:
-    'Portfolio of Shahil, a passionate full-stack software engineer and builder crafting web applications, AI automations, and intuitive digital experiences.',
+    'I build automation for businesses drowning in manual work, then film myself doing it — mostly in Malayalam. Projects, videos and how to reach me.',
   keywords: [
-    'Shahil',
-    'Full Stack Developer',
-    'Software Engineer',
-    'Product Builder',
-    'Web Developer',
-    'React',
-    'Next.js',
-    'AI Automations',
-    'Flaro AI',
-    'Portfolio',
+    'Shahil KV',
+    'Automation builder',
+    'Claude Code',
+    'MCP',
+    'AI agents',
+    'Malayalam tech videos',
+    'Full stack developer Kerala',
+    'Flaro',
   ],
-  authors: [{ name: 'Shahil', url: 'https://github.com/shahil-kv' }],
-  creator: 'Shahil',
-  publisher: 'Shahil',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  authors: [{ name: 'Shahil KV', url: 'https://github.com/shahil-kv' }],
+  creator: 'Shahil KV',
+  publisher: 'Shahil KV',
+  alternates: { canonical: '/' },
+  formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: [
-      { url: '/shahilimage.JPG', type: 'image/jpeg' },
       { url: '/icon.png', type: 'image/png' },
+      { url: '/shahilimage.JPG', type: 'image/jpeg' },
     ],
-    shortcut: '/shahilimage.JPG',
     apple: '/shahilimage.JPG',
   },
   openGraph: {
-    title: 'Shahil | Full Stack Developer & Product Builder',
+    title: 'Shahil KV — Developer, founder, automation builder',
     description:
-      'Explore projects, AI automations, and digital products built by Shahil.',
-    url: 'https://shahil.co',
-    siteName: 'Shahil.co',
+      'Automation, AI agents and the videos about building them. From Kerala.',
+    url: SITE,
+    siteName: 'shahilkv.in',
     images: [
       {
         url: '/shahilimage.JPG',
         width: 1600,
         height: 1600,
-        alt: 'Shahil Logo Avatar',
+        alt: 'Shahil KV',
       },
     ],
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shahil | Full Stack Developer & Product Builder',
+    title: 'Shahil KV — Developer, founder, automation builder',
     description:
-      'Explore projects, AI automations, and digital products built by Shahil.',
+      'Automation, AI agents and the videos about building them. From Kerala.',
     images: ['/shahilimage.JPG'],
   },
   robots: {
@@ -104,11 +107,16 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Person',
-      '@id': 'https://shahil.co/#person',
-      name: 'Shahil',
-      jobTitle: 'Full Stack Developer & Product Builder',
-      image: 'https://shahil.co/shahilimage.JPG',
-      url: 'https://shahil.co',
+      '@id': `${SITE}/#person`,
+      name: 'Shahil KV',
+      jobTitle: 'Developer, founder and automation builder',
+      image: `${SITE}/shahilimage.JPG`,
+      url: SITE,
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Kerala',
+        addressCountry: 'IN',
+      },
       sameAs: [
         'https://github.com/shahil-kv',
         'https://www.instagram.com/_shahilee/',
@@ -116,14 +124,12 @@ const jsonLd = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://shahil.co/#website',
-      url: 'https://shahil.co',
-      name: 'Shahil.co',
+      '@id': `${SITE}/#website`,
+      url: SITE,
+      name: 'shahilkv.in',
       description:
-        'Portfolio of Shahil, Full Stack Developer & Product Builder',
-      publisher: {
-        '@id': 'https://shahil.co/#person',
-      },
+        'Portfolio of Shahil KV — developer, founder and automation builder.',
+      publisher: { '@id': `${SITE}/#person` },
     },
   ],
 };
@@ -136,21 +142,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head>
-        <link rel='icon' href='/shahilimage.JPG' />
-        <link rel='apple-touch-icon' href='/shahilimage.JPG' />
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`bg-[url("/paper.png")] bg-repeat bg-left-top ${geistSans.variable} ${nanumPenScript.variable} ${geistMono.variable} ${dmSans.variable} antialiased`}
+        className={`${bricolage.variable} ${newsreader.variable} ${dmMono.variable} ${caveat.variable} antialiased`}
       >
-        <div className='flex min-h-screen w-full flex-col'>
-          <Header />
-          <main className='flex-grow pt-16 lg:pt-20'>{children}</main>
-          <Footer />
-        </div>
+        <Header />
+        <main className='notebook'>{children}</main>
       </body>
     </html>
   );
